@@ -1,8 +1,8 @@
-.mainDiv{
+.mainDiv {
   position: absolute !important;
 }
-.loginCard{
-  border: 1px solid cyan;
+.loginCard {
+  border: 1px solid #ccc;
   border-radius: 35px;
   padding: 60px 0px;
   background-color: #fff;
@@ -13,30 +13,30 @@
   margin-left: 12rem;
 }
 
-.cardDesign{
-  border: 1px solid cyan;
+.cardDesign {
+  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 60px 0px;
   background-color: #fff;
-  box-shadow: 10px 10px 5px lightblue;
+  box-shadow: 10px 10px 5px #ccc;
 }
 
-.logoImg{
+.logoImg {
   width: 70% !important;
 }
-.btn{
+.btn {
   background-color: red !important;
   color: white !important;
   padding: 10px 22px !important;
   border-radius: 100px !important;
   width: 18rem;
 }
-.btn:hover{
+.btn:hover {
   transition: 0.3s;
   color: #fff !important;
   background: #000 !important;
   border: 1px solid #000 !important;
 }
-.videoTag{
+.videoTag {
   position: fixed !important;
 }

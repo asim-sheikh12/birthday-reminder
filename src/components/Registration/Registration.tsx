@@ -80,7 +80,7 @@ export const Registration = () => {
                   //   state={formValues}
                   setState={setFormValues}
                 />
-                <button className="btn w-100 mt-4">Sign in</button>
+                <button className="btn w-100 mt-4">Add Employee</button>
               </form>
             </Box>
           </Container>

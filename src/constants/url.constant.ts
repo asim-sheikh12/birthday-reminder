@@ -1,5 +1,5 @@
 export const enum Posts {
-  ALL_POSTS = 'posts',
+  ALL_POSTS = 'users',
 }
 
 export const URL = {

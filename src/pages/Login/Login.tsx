@@ -1,13 +1,9 @@
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-// import Avatar from '@mui/material/Avatar';
 import '../../App.css';
 
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
 import Logo from '../../assets/images/Logo.svg';
@@ -35,10 +31,6 @@ export const Login = () => {
         <CssBaseline />
         <div className="d-flex align-items-center flex-column loginCard">
           <img src={Logo} alt="Logo" />
-
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}

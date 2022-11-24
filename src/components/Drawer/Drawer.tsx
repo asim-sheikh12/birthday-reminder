@@ -24,6 +24,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+import type { IPost } from '@/interfaces';
+
+import { getEmployeeData } from '../../services';
 import { Registration } from '../Registration';
 import { CustomTable } from '../Table/Table';
 
@@ -101,7 +104,17 @@ const Drawer = styled(MuiDrawer, {
 export const CustomDrawer = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [isTooggle, setIsToggle] = React.useState<string>('list');
+  const [employeeData, setEmployeeData] = React.useState<IPost[]>([]);
+  const [isTooggle, setIsToggle] = React.useState<string>('Employee List');
+
+  const getData = async () => {
+    const result = await getEmployeeData();
+    setEmployeeData(result);
+  };
+
+  React.useEffect(() => {
+    getData();
+  }, []);
 
   const handleIconClick = (value: string) => {
     setIsToggle(value);
@@ -204,7 +217,11 @@ export const CustomDrawer = () => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {isTooggle === 'Employee List' ? <CustomTable /> : <Registration />}
+        {isTooggle === 'Employee List' ? (
+          <CustomTable employeeData={employeeData} />
+        ) : (
+          <Registration />
+        )}
       </Box>
     </Box>
   );

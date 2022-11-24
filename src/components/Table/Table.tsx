@@ -1,146 +1,58 @@
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import { IconButton, Paper } from '@mui/material';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
 
-interface Column {
-  id: 'name' | 'dob' | 'email' | 'department' | 'branch';
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-  format?: (value: number) => string;
+import type { IPost } from '@/interfaces';
+
+interface IProps {
+  employeeData: IPost[];
 }
 
-const columns: readonly Column[] = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'dob', label: 'DOB', minWidth: 100 },
-  {
-    id: 'email',
-    label: 'Email',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'department',
-    label: 'Department',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'branch',
-    label: 'Branch',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toFixed(2),
-  },
-];
-
-interface Data {
-  name: string;
-  dob: string;
-  email: number;
-  department: number;
-  branch: number;
-}
-
-function createData(
-  name: string,
-  dob: string,
-  email: number,
-  department: number,
-): Data {
-  const branch = email / department;
-  return { name, dob, email, department, branch };
-}
-
-const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
-];
-
-export const CustomTable = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
+export const CustomTable = ({ employeeData }: IProps) => {
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+        <div className="table-responsive">
+          <table className="table caption-top">
+            {/* <caption>List of users</caption> */}
+            <thead>
+              <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Name </th>
+                <th scope="col">Email</th>
+                <th scope="col">Department</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employeeData?.map((employee) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.dob}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
+                  <tr key={employee?.id}>
+                    <th scope="row">{employee?.id}</th>
+                    <td>{employee?.name}</td>
+                    <td>{employee?.email}</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>
+                      <IconButton aria-label="edit">
+                        <EditTwoToneIcon />
+                      </IconButton>
+                      <IconButton aria-label="delete">
+                        <DeleteTwoToneIcon />
+                      </IconButton>
+                    </td>
+                  </tr>
                 );
               })}
-          </TableBody>
-        </Table>
+            </tbody>
+          </table>
+        </div>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </Paper>
   );
 };

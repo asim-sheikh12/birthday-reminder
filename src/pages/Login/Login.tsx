@@ -1,7 +1,9 @@
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Avatar from '@mui/material/Avatar';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import Avatar from '@mui/material/Avatar';
+import '../../App.css';
+
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -10,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+import Logo from '../../assets/images/Logo.svg';
 import { CustomInput } from '../../components/Input/Input';
 
 function Copyright(props: any) {
@@ -48,17 +51,12 @@ export const Login = () => {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="md">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <div className="d-flex align-items-center flex-column mt-5 loginCard">
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
+          <img src={Logo} alt="Logo" />
+
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -80,23 +78,28 @@ export const Login = () => {
               state={password}
               setState={setPassword}
             />
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button>
+            </Button> */}
+            <button type="button" className="btn btn w-100 mt-3">
+              Sign In
+            </button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                <div className="d-flex justify-content-end mt-2">
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </div>
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </div>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>

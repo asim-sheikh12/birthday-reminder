@@ -1,3 +1,5 @@
+import '../../App.css';
+
 import { AccountCircle } from '@mui/icons-material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -136,7 +138,10 @@ export const CustomDrawer = () => {
             component="div"
             sx={{ marginTop: 1.5 }}
           >
-            <img src="https://thoughtwin.com/assets/img/Logo.svg" />
+            <img
+              className="logoImg"
+              src="https://thoughtwin.com/assets/img/Logo.svg"
+            />
             {/* Thoughtwin */}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />

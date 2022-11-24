@@ -16,7 +16,7 @@ export const Registration = () => {
   });
   return (
     <Box>
-      <div className="d-flex align-items-center jystify-content-center flex-column loginCard">
+      <div className="d-flex align-items-center jystify-content-center flex-column cardDesign">
         <h2>Employee Registration</h2>
         <Box>
           <Container component="main" maxWidth="md">
